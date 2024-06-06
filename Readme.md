@@ -39,7 +39,7 @@ The Sales Management API is a backend web application built with ASP.NET Core. I
 
 ## Prerequisites
 
-- [.NET 6 SDK](https://dotnet.microsoft.com/download/dotnet/6.0)
+- [.NET 8 SDK](https://dotnet.microsoft.com/download/dotnet/8.0)
 - [Docker](https://www.docker.com/get-started)
 - [SQLite](https://www.sqlite.org/download.html)
 
@@ -50,3 +50,198 @@ The Sales Management API is a backend web application built with ASP.NET Core. I
 ```bash
 git clone https://github.com/yourusername/sales-management-api.git
 cd sales-management-api
+```
+
+### Configuration
+Create an appsettings.json file in the root directory with the following content:
+
+```json
+{
+  "ConnectionStrings": {
+    "DefaultConnection": "Data Source=salesmanagement.db"
+  },
+  "Jwt": {
+    "Key": "YourJwtSecretKey",
+    "Issuer": "yourdomain.com",
+    "Audience": "yourdomain.com"
+  },
+  "Logging": {
+    "LogLevel": {
+      "Default": "Information",
+      "Microsoft": "Warning",
+      "Microsoft.Hosting.Lifetime": "Information"
+    }
+  },
+  "AllowedHosts": "*"
+}
+```
+
+### Build and Run
+Restore dependencies and build the project:
+
+```bash
+dotnet restore
+dotnet build
+```
+
+Run the application:
+
+```bash
+dotnet run
+```
+
+### Database Migration
+Apply migrations to the SQLite database:
+
+```bash
+dotnet ef migrations add InitialCreate
+dotnet ef database update
+```
+
+### API Endpoints
+
+#### Sales Endpoint
+*GET `/api/salesorder`
+**Display a list of sales orders.
+
+*POST `/api/salesorder`
+**Create a new sales order.
+
+*DELETE `/api/salesorder/{id}`
+**Delete an existing sales order.
+
+#### Products Endpoint
+
+* GET `/api/products`
+** Display a list of products.
+
+* POST `/api/products`
+** Create a new product.
+
+* GET `/api/products/name/{name}`
+** Retrieve a product by name.
+
+#### Dashboard Endpoint
+
+* GET `/api/dashboard/products-highest-quantity-sold`
+**Display products with the highest quantity sold.
+
+* GET `/api/dashboard/products-highest-price`
+**Display products with the highest price.
+
+#### User Endpoint
+
+* POST `/api/user/signup`
+** Register a new user.
+
+* POST `/api/user/login`
+** Login and retrieve a JWT token.
+
+
+### SingalR Hub
+
+Endpoint: `/liveSalesUpdates`
+
+## Authentication
+
+The API uses JWT (JSON Web Tokens) for authentication. After registering or logging in, you will receive a token which must be included in the Authorization header of subsequent requests.
+
+### Register a User
+
+Endpoint: POST /api/user/signup
+
+Request body:
+
+```json
+{
+  "username": "yourusername",
+  "password": "yourpassword"
+}
+```
+
+### Login
+
+Endpoint: POST `/api/user/login`
+
+Request body:
+
+```json
+{
+  "username": "yourusername",
+  "password": "yourpassword"
+}
+```
+
+Response
+
+```json
+{
+  "username": "yourusername",
+  "token": "access token"
+}
+```
+
+Include this token in the Authorization header of your requests:
+
+```makefile
+Authorization: Bearer token
+```
+
+## Docker Integration
+
+### Dockerfile
+
+A Dockerfile is included to build the application into a Docker image.
+
+### Build and Run with Docker
+
+Build the Docker image:
+
+```bash
+docker build -t sales-orders-api .
+```
+
+Run the Docker container:
+
+```bash
+docker run -d -p 5000:80 --name sales-orders-api sales-orders-api
+```
+
+The API will be available at http://localhost:5000.
+
+## Logging
+The application uses Serilog for logging. Logs are configured in the appsettings.json file. Adjust the configuration as needed.
+
+## Real-Time Updates with SignalR
+
+SignalR is used for real-time updates. The hub is available at /hubs/sales. Clients can connect to receive real-time sales updates.
+
+### Example Client Connection
+
+Using JavaScript, you can connect to the SignalR hub as follows:
+
+```javascript
+const connection = new signalR.HubConnectionBuilder()
+    .withUrl("/liveSalesUpdates")
+    .build();
+
+connection.on("NewSalesOrder", (message) => {
+    console.log("New sales order update received: ", message);
+});
+
+connection.on("DeletedSalesOrder", (message) => {
+    console.log("Deleted sales order update received: ", message);
+});
+
+connection.start()
+    .then(() => console.log("Connected to the sales live updates hub"))
+    .catch(err => console.error("Error connecting to the sales live updates hub: ", err));
+```
+
+
+## Testing
+The application includes unit tests for services. To run the tests, use the following command:
+
+```bash
+dotnet test
+```

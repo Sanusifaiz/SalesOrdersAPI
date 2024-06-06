@@ -102,7 +102,7 @@ app.UseMiddleware<ExceptionMiddleware>();
 app.UseEndpoints(endpoints =>
 {
     endpoints.MapControllers();
-    endpoints.MapHub<SignalRHub>("/salesHub");
+    endpoints.MapHub<SignalRHub>("/liveSalesUpdates");
 });
 app.InitializeDatabase();
 
