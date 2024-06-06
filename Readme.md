@@ -209,6 +209,29 @@ docker run -d -p 5000:80 --name sales-orders-api sales-orders-api
 
 The API will be available at http://localhost:5000.
 
+### Using Docker Desktop GUI
+1. Open Docker Desktop: Launch Docker Desktop from your system tray or menu bar.
+
+2. Build the Image Using Docker Desktop:
+
+** Click on the + Add button in the Images section.
+** Select Build image from Dockerfile.
+** Choose the directory where your Dockerfile is located (the root directory of your cloned repository).
+** Follow the prompts to build the image. Tag it as sales-orders-api.
+
+3.Run the Container Using Docker Desktop:
+
+** Go to the Images tab.
+** Find the sales-orders-api image you just built.
+** Click on the Run button next to the image.
+** Configure the container settings:
+  Set the port mapping (e.g., map container port 80 to host port 5000).
+  Name the container sales-management-api.
+** Click Run to start the container.
+
+4. Access the API:
+** Open your web browser and navigate to http://localhost:5000. The API should be running.
+
 ## Logging
 The application uses Serilog for logging. Logs are configured in the appsettings.json file. Adjust the configuration as needed.
 
