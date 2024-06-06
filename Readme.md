@@ -214,7 +214,7 @@ The application uses Serilog for logging. Logs are configured in the appsettings
 
 ## Real-Time Updates with SignalR
 
-SignalR is used for real-time updates. The hub is available at /hubs/sales. Clients can connect to receive real-time sales updates.
+SignalR is used for real-time updates. The hub is available at /liveSalesUpdates. Clients can connect to receive real-time sales updates.
 
 ### Example Client Connection
 
