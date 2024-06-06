@@ -19,6 +19,10 @@ namespace SalesOrdersAPI.Controllers
             _salesOrderService = salesOrderService;
         }
 
+        /// <summary>
+        /// Get Sales Orders List Endpoint
+        /// </summary>
+        /// <returns></returns>
         [HttpGet]
         public async Task<IActionResult> GetSalesOrders()
         {
@@ -26,6 +30,11 @@ namespace SalesOrdersAPI.Controllers
             return Ok(salesOrders);
         }
 
+        /// <summary>
+        /// Get Sales Orders By Id Endpoint
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         [HttpGet("{id}")]
         public async Task<IActionResult> GetSalesOrderById(int id)
         {
@@ -38,6 +47,11 @@ namespace SalesOrdersAPI.Controllers
             return Ok(salesOrder);
         }
 
+        /// <summary>
+        /// Create Sales Orders Endpoint
+        /// </summary>
+        /// <param name="salesOrder"></param>
+        /// <returns></returns>
         [Authorize]
         [HttpPost]
         public async Task<IActionResult> CreateSalesOrder(CreateSalesOrderDTO salesOrder)
@@ -57,6 +71,11 @@ namespace SalesOrdersAPI.Controllers
             return StatusCode(201, createdSalesOrder);
         }
 
+        /// <summary>
+        /// Delete Sales Order Endpoint
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         [Authorize]
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteSalesOrder(int id)

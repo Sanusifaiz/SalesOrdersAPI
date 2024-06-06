@@ -19,6 +19,10 @@ namespace SalesOrdersAPI.Controllers
         }
 
 
+        /// <summary>
+        /// Get products Endpoint
+        /// </summary>
+        /// <returns></returns>
         [HttpGet]
         public async Task<IActionResult> GetProducts()
         {
@@ -31,6 +35,11 @@ namespace SalesOrdersAPI.Controllers
             return Ok(products);
         }
 
+        /// <summary>
+        /// Create Product Endpoint
+        /// </summary>
+        /// <param name="product"></param>
+        /// <returns></returns>
         [Authorize]
         [HttpPost]
         public async Task<IActionResult> CreateProduct(CreateProductDTO product)
@@ -51,6 +60,11 @@ namespace SalesOrdersAPI.Controllers
         }
 
 
+        /// <summary>
+        /// Get Product By Name Endpoint
+        /// </summary>
+        /// <param name="name"></param>
+        /// <returns></returns>
         [HttpGet("name/{name}")]
         public async Task<IActionResult> GetProductByName(string name) 
         {

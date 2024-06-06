@@ -18,7 +18,11 @@ namespace SalesOrdersAPI.Controllers
         }
 
 
-
+        /// <summary>
+        /// Signup Endpoint
+        /// </summary>
+        /// <param name="userRegisterDto"></param>
+        /// <returns></returns>
         [HttpPost("signup")]
         public async Task<IActionResult> Signup(UserRegRequestDTO userRegisterDto)
         {
@@ -38,6 +42,11 @@ namespace SalesOrdersAPI.Controllers
             return Ok(result);
         }
 
+        /// <summary>
+        /// Login Endpoint
+        /// </summary>
+        /// <param name="userLoginDto"></param>
+        /// <returns></returns>
         [HttpPost("login")]
         public async Task<IActionResult> Login(UserLoginDTO userLoginDto)
         {

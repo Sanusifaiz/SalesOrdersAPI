@@ -83,6 +83,12 @@ namespace SalesOrders.Services.Services
             }
         }
 
+        /// <summary>
+        /// JWT token generator 
+        /// </summary>
+        /// <param name="user"></param>
+        /// <param name="tokenHandler"></param>
+        /// <param name="token"></param>
         private void GenerateToken(User? user, out JwtSecurityTokenHandler tokenHandler, out SecurityToken token)
         {
             tokenHandler = new JwtSecurityTokenHandler();

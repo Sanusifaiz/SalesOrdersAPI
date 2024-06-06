@@ -20,7 +20,10 @@ namespace SalesOrdersAPI.Controllers
         }
 
 
-
+        /// <summary>
+        /// Get Products With Highest Quantity Sold Endpoint
+        /// </summary>
+        /// <returns></returns>
         [HttpGet("products-highest-quantity-sold")]
         public async Task<IActionResult> GetProductsWithHighestQuantitySold()
         {
@@ -36,6 +39,11 @@ namespace SalesOrdersAPI.Controllers
             }
         }
 
+        /// <summary>
+        /// Get Products With Highest Price Endpoint
+        /// </summary>
+        /// <param name="number"></param>
+        /// <returns></returns>
         [HttpGet("products-highest-price")]
         public async Task<IActionResult> GetProductsWithHighestPrice(int number)
         {

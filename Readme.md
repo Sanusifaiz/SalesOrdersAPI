@@ -268,3 +268,18 @@ The application includes unit tests for services. To run the tests, use the foll
 ```bash
 dotnet test
 ```
+
+## Swagger Integration
+
+The Sales Management API includes Swagger for API documentation and testing.
+
+### Accessing Swagger
+
+#### Swagger JSON Endpoint:
+
+To access the Swagger JSON document, navigate to:
+
+```bash
+https://localhost:7043/swagger/index.html
+```
+This interface allows you to explore the available API endpoints, test them, and see request and response details.
