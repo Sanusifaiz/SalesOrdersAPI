@@ -101,41 +101,41 @@ dotnet ef database update
 ### API Endpoints
 
 #### Sales Endpoint
-*GET `/api/salesorder`
-**Display a list of sales orders.
+** GET `/api/salesorder`
+* Display a list of sales orders.
 
-*POST `/api/salesorder`
-**Create a new sales order.
+** POST `/api/salesorder`
+* Create a new sales order.
 
-*DELETE `/api/salesorder/{id}`
-**Delete an existing sales order.
+** DELETE `/api/salesorder/{id}`
+* Delete an existing sales order.
 
 #### Products Endpoint
 
-* GET `/api/products`
-** Display a list of products.
+** GET `/api/products`
+* Display a list of products.
 
-* POST `/api/products`
-** Create a new product.
+** POST `/api/products`
+* Create a new product.
 
-* GET `/api/products/name/{name}`
-** Retrieve a product by name.
+** GET `/api/products/name/{name}`
+* Retrieve a product by name.
 
 #### Dashboard Endpoint
 
-* GET `/api/dashboard/products-highest-quantity-sold`
-**Display products with the highest quantity sold.
+** GET `/api/dashboard/products-highest-quantity-sold`
+* Display products with the highest quantity sold.
 
-* GET `/api/dashboard/products-highest-price`
-**Display products with the highest price.
+** GET `/api/dashboard/products-highest-price`
+* Display products with the highest price.
 
 #### User Endpoint
 
-* POST `/api/user/signup`
-** Register a new user.
+** POST `/api/user/signup`
+* Register a new user.
 
-* POST `/api/user/login`
-** Login and retrieve a JWT token.
+** POST `/api/user/login`
+* Login and retrieve a JWT token.
 
 
 ### SingalR Hub
