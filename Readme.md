@@ -48,8 +48,8 @@ The Sales Management API is a backend web application built with ASP.NET Core. I
 ### Clone the Repository
 
 ```bash
-git clone https://github.com/yourusername/sales-management-api.git
-cd sales-management-api
+git clone https://github.com/Sanusifaiz/SalesOrdersAPI.git
+cd salesOrdersAPI
 ```
 
 ### Configuration
@@ -57,22 +57,41 @@ Create an appsettings.json file in the root directory with the following content
 
 ```json
 {
-  "ConnectionStrings": {
-    "DefaultConnection": "Data Source=salesmanagement.db"
-  },
-  "Jwt": {
-    "Key": "YourJwtSecretKey",
-    "Issuer": "yourdomain.com",
-    "Audience": "yourdomain.com"
-  },
   "Logging": {
     "LogLevel": {
       "Default": "Information",
-      "Microsoft": "Warning",
-      "Microsoft.Hosting.Lifetime": "Information"
+      "Microsoft.AspNetCore": "Warning"
     }
   },
-  "AllowedHosts": "*"
+  "AllowedHosts": "*",
+  "ConnectionStrings": {
+      "DefaultConnection": "Data Source=salesmanagement.sqlite"
+   },
+   "Jwt": {
+      "Key": "salesOrderJwtSecret6456346456365463456"
+    },
+  "Serilog": {
+    "MinimumLevel": {
+      "Default": "Information",
+      "Override": {
+        "Microsoft": "Warning",
+        "System": "Warning"
+      }
+    },
+    "WriteTo": [
+      {
+        "Name": "Console"
+      },
+      {
+        "Name": "File",
+        "Args": {
+          "path": "Logs/log-.txt",
+          "rollingInterval": "Day"
+        }
+      }
+    ]
+  }
+
 }
 ```
 
@@ -237,7 +256,7 @@ The application uses Serilog for logging. Logs are configured in the appsettings
 
 ## Real-Time Updates with SignalR
 
-SignalR is used for real-time updates. The hub is available at /liveSalesUpdates. Clients can connect to receive real-time sales updates.
+SignalR is used for real-time updates. The hub is available at `/liveSalesUpdates`. Clients can connect to receive real-time sales updates.
 
 ### Example Client Connection
 
