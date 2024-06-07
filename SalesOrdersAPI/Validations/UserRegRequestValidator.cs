@@ -17,6 +17,12 @@ namespace SalesOrdersAPI.Validations
 
             RuleFor(x => x.UserName).MaximumLength(100)
              .WithMessage("Invalid username");
+
+            RuleFor(x => x.UserName).MinimumLength(5)
+             .WithMessage("Username should be greater than 5 characters");
+
+            RuleFor(x => x.UserName).MinimumLength(5)
+             .WithMessage("Password should be greater than 5 characters");
         }
     }
 }
